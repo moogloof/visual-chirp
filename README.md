@@ -1,2 +1,2 @@
 # visual-chirp
-Generating bird images
+Pigeons are evil.
