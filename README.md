@@ -1,2 +1,2 @@
 # visual-chirp
-Pigeons are evil.
+Pigeons are evil, peguins are not.
