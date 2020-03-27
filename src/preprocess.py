@@ -45,14 +45,21 @@ def unload_image_data(paths):
 
 # Declare full_data and all categorical directory paths
 full_data = {}
+selected_paths = []
 cat_paths = load_all_paths(IMAGE_DIRPATH, dirsonly=True)
+
+# Load selected birds
+with open("selectedbirds.txt", "r") as f:
+    for line in f:
+        selected_paths.append(line[:-1])
 
 # Load and sort image data into respective categories
 for p in cat_paths:
     name = os.path.basename(p)
 
-    full_data[name] = load_all_paths(p, "jpg") + load_all_paths(p, "png")
-    full_data[name] = unload_image_data(full_data[name])
+    if name in selected_paths:
+        full_data[name] = load_all_paths(p, "jpg") + load_all_paths(p, "png")
+        full_data[name] = unload_image_data(full_data[name])
 
 # Dump loaded image data into outdata file
 with open("outdata", "wb") as f:
